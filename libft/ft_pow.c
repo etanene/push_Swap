@@ -1,18 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_pow.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afalmer- <afalmer-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/27 21:01:44 by afalmer-          #+#    #+#             */
-/*   Updated: 2019/04/12 17:13:23 by afalmer-         ###   ########.fr       */
+/*   Created: 2019/04/12 17:19:13 by afalmer-          #+#    #+#             */
+/*   Updated: 2019/04/12 17:19:26 by afalmer-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putchar_fd(char c, int fd)
+int		ft_pow(int base, int power)
 {
-	write(fd, &c, 1);
+	int		res;
+
+	res = 1;
+	while (power--)
+		res *= base;
+	return (res);
 }

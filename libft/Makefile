@@ -6,13 +6,14 @@
 #    By: afalmer- <afalmer-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/24 17:30:17 by afalmer-          #+#    #+#              #
-#    Updated: 2019/04/11 20:29:31 by afalmer-         ###   ########.fr        #
+#    Updated: 2019/04/12 17:25:00 by afalmer-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 
-SRC =	ft_atoi.c ft_bzero.c ft_itoa.c ft_tolower.c ft_toupper.c get_next_line.c
+SRC =	ft_atoi.c ft_bzero.c ft_itoa.c ft_tolower.c ft_toupper.c \
+		get_next_line.c ft_pow.c ft_unumlen.c
 
 SRCDIR_IS = ft_is/
 SRC_IS =	ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c ft_isprint.c
@@ -28,7 +29,8 @@ SRC_MEM =	ft_memalloc.c ft_memccpy.c ft_memchr.c ft_memcmp.c ft_memcpy.c \
 SRCDIR_PRINTF = ft_printf/
 SRC_PRINTF =	ft_bigint_op.c ft_bigint.c ft_buff_manage.c ft_parse_nums.c \
 				ft_print_cs.c ft_print_diuoxb.c ft_print_e.c ft_print_f.c \
-				ft_print_options.c ft_print_prk.c ft_printf.c ft_set_options
+				ft_print_options.c ft_print_prk.c ft_printf.c ft_set_options.c \
+				ft_utils_num.c ft_utils_str.c
 
 SRCDIR_PUT = ft_put/
 SRC_PUT =	ft_putchar_fd.c ft_putchar.c ft_putendl_fd.c ft_putendl.c \
@@ -43,7 +45,14 @@ SRC_STR =	ft_strcat.c ft_strchr.c ft_strclr.c ft_strcmp.c ft_strcpy.c \
 			ft_strtrim.c
 
 OBJDIR = obj/
-OBJ = $(addprefix $(OBJDIR), $($(SRC:%.c=%.o) $(SRC_PRINTF:%.c=%.o))
+OBJ = $(addprefix $(OBJDIR), $(SRC:%.c=%.o) \
+								$(SRC_IS:%.c=%.o) \
+								$(SRC_IS:%.c=%.o) \
+								$(SRC_LST:%.c=%.o) \
+								$(SRC_MEM:%.c=%.o) \
+								$(SRC_PRINTF:%.c=%.o) \
+								$(SRC_PUT:%.c=%.o) \
+								$(SRC_STR:%.c=%.o))
 
 FLAG = -Wall -Wextra -Werror
 

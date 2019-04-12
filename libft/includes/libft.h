@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afalmer- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: afalmer- <afalmer-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/21 11:53:56 by afalmer-          #+#    #+#             */
-/*   Updated: 2018/11/21 11:53:57 by afalmer-         ###   ########.fr       */
+/*   Updated: 2019/04/12 17:21:55 by afalmer-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,11 @@
 # define OUT 0
 
 # include <string.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include <errno.h>
+# include "get_next_line.h"
+# include "ft_printf.h"
 
 typedef struct		s_list
 {
@@ -84,5 +89,7 @@ void				ft_lstdel(t_list **alst, void (*del)(void*, size_t));
 void				ft_lstadd(t_list **alst, t_list *new);
 void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
+int					ft_pow(int base, int power);
+int					ft_unumlen(unsigned long long num, int base);
 
 #endif

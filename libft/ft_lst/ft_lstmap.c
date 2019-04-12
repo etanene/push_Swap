@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afalmer- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: afalmer- <afalmer-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 16:42:06 by afalmer-          #+#    #+#             */
-/*   Updated: 2018/11/29 16:42:07 by afalmer-         ###   ########.fr       */
+/*   Updated: 2019/04/12 17:12:42 by afalmer-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
 static void	ft_lstdel_content(void *content, size_t size)
 {

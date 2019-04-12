@@ -6,7 +6,7 @@
 /*   By: afalmer- <afalmer-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 18:32:10 by aleksandr         #+#    #+#             */
-/*   Updated: 2019/02/19 18:32:11 by afalmer-         ###   ########.fr       */
+/*   Updated: 2019/04/12 17:23:38 by afalmer-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <wchar.h>
 # include <inttypes.h>
 # include <stdlib.h>
+# include "libft.h"
 
 # define MAX_LEN 512
 
@@ -97,9 +98,6 @@ int						ft_strnlen(char *str, int n);
 int						ft_wstrnlen(wchar_t *str, int n);
 int						ft_rstrnlen(char *str, int n);
 
-int						ft_pow(int base, int power);
-int						ft_atoi(const char *str);
-int						ft_unumlen(unsigned long long num, int base);
 int						ft_itoa_base(unsigned long long num, char *str, \
 							int base, char lower);
 

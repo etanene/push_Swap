@@ -1,18 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_unumlen.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afalmer- <afalmer-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/27 21:01:44 by afalmer-          #+#    #+#             */
-/*   Updated: 2019/04/12 17:13:23 by afalmer-         ###   ########.fr       */
+/*   Created: 2019/04/12 17:21:25 by afalmer-          #+#    #+#             */
+/*   Updated: 2019/04/12 17:21:44 by afalmer-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putchar_fd(char c, int fd)
+int		ft_unumlen(unsigned long long num, int base)
 {
-	write(fd, &c, 1);
+	int		len;
+
+	len = 0;
+	while (num /= base)
+		len++;
+	return (len + 1);
 }

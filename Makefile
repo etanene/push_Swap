@@ -6,13 +6,13 @@
 #    By: afalmer- <afalmer-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/10 17:33:31 by afalmer-          #+#    #+#              #
-#    Updated: 2019/04/12 17:43:35 by afalmer-         ###   ########.fr        #
+#    Updated: 2019/04/12 19:48:17 by afalmer-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CHECKER = ./checker
 SRCDIR_CHECKER = checkerdir/
-SRC_CHECKER = main.c stack_op.c
+SRC_CHECKER = main.c stack.c operations.c
 OBJDIR_CHECKER = checkerdir/obj/
 OBJ_CHECKER = $(addprefix $(OBJDIR_CHECKER), $(SRC_CHECKER:%.c=%.o))
 

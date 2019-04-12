@@ -1,37 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_op.c                                         :+:      :+:    :+:   */
+/*   operations.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afalmer- <afalmer-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/11 17:54:35 by afalmer-          #+#    #+#             */
-/*   Updated: 2019/04/12 17:30:07 by afalmer-         ###   ########.fr       */
+/*   Created: 2019/04/12 18:36:02 by afalmer-          #+#    #+#             */
+/*   Updated: 2019/04/12 19:48:29 by afalmer-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-void	ft_print_stack(t_stack *stack, char name)
-{
-	if (name)
-		ft_printf("%c |", name);
-	if (!stack)
-		return ;
-	ft_print_stack(stack->next, 0);
-	ft_printf(" %d", stack->value);
-	if (name)
-		ft_putchar('\n');
-}
-
-t_stack	*ft_push(t_stack **stack, int num)
+void	ft_push_op(t_stack **a, t_stack **b, char name)
 {
 	t_stack	*elem;
 
-	if ((elem = (t_stack*)malloc(sizeof(t_stack))) == NULL)
-		return (NULL);
-	elem->value = num;
-	elem->next = *stack;
-	*stack = elem;
-	return (*stack);
+	if (name == 'a')
+	{
+		if ((elem = ft_pop(b)))
+			ft_push(a, elem);
+	}
+	else if (name == 'b')
+	{
+		if ((elem = ft_pop(a)))
+			ft_push(b, elem);
+	}
 }

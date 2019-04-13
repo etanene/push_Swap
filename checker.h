@@ -6,7 +6,7 @@
 /*   By: afalmer- <afalmer-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 20:06:26 by afalmer-          #+#    #+#             */
-/*   Updated: 2019/04/12 19:48:35 by afalmer-         ###   ########.fr       */
+/*   Updated: 2019/04/13 15:13:47 by afalmer-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,9 @@ t_stack				*ft_create_elem(int num);
 void				ft_push(t_stack **stack, t_stack *elem);
 t_stack				*ft_pop(t_stack **stack);
 
-void				ft_push_op(t_stack **a, t_stack **b, char name);
+void				ft_push_op(t_stack **from, t_stack **to);
+void				ft_swap_op(t_stack **stack);
+void				ft_rotate_op(t_stack **stack);
+void				ft_revrotate_op(t_stack **stack);
 
 #endif

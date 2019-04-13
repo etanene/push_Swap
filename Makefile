@@ -6,7 +6,7 @@
 #    By: afalmer- <afalmer-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/10 17:33:31 by afalmer-          #+#    #+#              #
-#    Updated: 2019/04/12 19:48:17 by afalmer-         ###   ########.fr        #
+#    Updated: 2019/04/13 17:28:22 by afalmer-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ $(OBJDIR_CHECKER):
 	mkdir checkerdir/obj/
 
 $(OBJDIR_CHECKER)%.o: $(SRCDIR_CHECKER)%.c
-	gcc $(FLAGS) -c $< -o $@ -I . -I ./libft/includes/
+	gcc $(FLAGS) -c $< -o $@ -I . -I ./libft/includes/ -g
 
 $(LIB):
 	make -C libft/

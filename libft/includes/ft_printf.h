@@ -6,7 +6,7 @@
 /*   By: afalmer- <afalmer-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 18:32:10 by aleksandr         #+#    #+#             */
-/*   Updated: 2019/04/12 17:23:38 by afalmer-         ###   ########.fr       */
+/*   Updated: 2019/04/13 19:40:46 by afalmer-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,8 +92,6 @@ void					ft_set_buff(t_buff *buffer);
 void					ft_out_buff(t_buff *buffer);
 void					ft_in_buff(t_buff *buffer, unsigned char c);
 
-void					ft_strdel(char **str);
-void					*ft_memmove(void *dst, const void *src, size_t len);
 int						ft_strnlen(char *str, int n);
 int						ft_wstrnlen(wchar_t *str, int n);
 int						ft_rstrnlen(char *str, int n);

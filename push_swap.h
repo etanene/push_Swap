@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.h                                          :+:      :+:    :+:   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afalmer- <afalmer-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/10 20:06:26 by afalmer-          #+#    #+#             */
-/*   Updated: 2019/04/13 15:13:47 by afalmer-         ###   ########.fr       */
+/*   Created: 2019/04/15 14:03:29 by afalmer-          #+#    #+#             */
+/*   Updated: 2019/04/15 15:02:08 by afalmer-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CHECKER_H
-# define CHECKER_H
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
 
 #include "libft.h"
 
@@ -21,8 +21,14 @@ typedef struct		s_stack
 	struct s_stack	*next;
 }					t_stack;
 
-void				ft_print_stack(t_stack *stack, char name);
+t_stack				*ft_set_stack(char **av, int ac);
 t_stack				*ft_create_elem(int num);
+
+int					ft_check_num(int num, char *str);
+int					ft_check_dup(t_stack *stack, int num);
+int					ft_is_sort(t_stack *a, t_stack *b);
+
+void				ft_print_stack(t_stack *stack, char name);
 void				ft_push(t_stack **stack, t_stack *elem);
 t_stack				*ft_pop(t_stack **stack);
 

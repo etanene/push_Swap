@@ -1,106 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afalmer- <afalmer-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 19:19:19 by afalmer-          #+#    #+#             */
-/*   Updated: 2019/04/13 19:53:56 by afalmer-         ###   ########.fr       */
+/*   Updated: 2019/04/15 15:01:35 by afalmer-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "push_swap.h"
 
-int		ft_is_sort(t_stack *stack)
-{
-	while (stack->next)
-	{
-		if (stack->value > stack->next->value)
-			return (0);
-		stack = stack->next;
-	}
-	return (1);
-}
-
-int		ft_check_dup(t_stack *stack, int num)
-{
-	while (stack)
-	{
-		if (stack->value == num)
-			return (0);
-		stack = stack->next;
-	}
-	return (1);
-}
-
-int		ft_check_num(int num, char *str)
-{
-	char	*numstr;
-
-	numstr = ft_itoa(num);
-	if (!ft_strcmp(str, numstr))
-	{
-		ft_strdel(&numstr);
-		return (1);
-	}
-	ft_strdel(&numstr);
-	return (0);
-}
-
-t_stack	*ft_add_num(char *str, t_stack **stack)
-{
-	t_stack	*elem;
-	int		num;
-
-	num = ft_atoi(str);
-	if (!ft_check_num(num, str) || \
-			!ft_check_dup(*stack, num) || \
-			!(elem = ft_create_elem(num)))
-		return (NULL);
-	ft_push(stack, elem);
-	return (elem);
-}
-
-int		ft_arrlen(char **arr)
-{
-	int		count;
-
-	count = 0;
-	while (*arr++)
-		count++;
-	return (count);
-}
-
-t_stack	*ft_set_stack(char **av, int ac)
-{
-	t_stack	*stack;
-	int		count;
-	char	**nums;
-
-	stack = NULL;
-	if (ac == 1)
-	{
-		nums = ft_strsplit(*av, ' ');
-		count = ft_arrlen(nums);
-		while (count--)
-		{
-			if (!ft_add_num(nums[count], &stack))
-				return (NULL);
-		}
-	}
-	else
-	{
-		while (ac--)
-		{
-			if (!ft_add_num(av[ac], &stack))
-				return (NULL);
-		}
-	}
-	return (stack);
-}
-
-int		ft_read_input(t_stack **a, t_stack **b)
+static int		ft_read_input(t_stack **a, t_stack **b)
 {
 	char	*op;
 
@@ -109,7 +21,7 @@ int		ft_read_input(t_stack **a, t_stack **b)
 		if (!ft_strcmp(op, "pa"))
 			ft_push_op(b, a);
 		else if (!ft_strcmp(op, "pb"))
-			ft_push_op(b, a);
+			ft_push_op(a, b);
 		else if (!ft_strcmp(op, "sa"))
 			ft_swap_op(a);
 		else if (!ft_strcmp(op, "sb"))
@@ -149,7 +61,7 @@ int		ft_read_input(t_stack **a, t_stack **b)
 	return (1);
 }
 
-int		main(int ac, char **av)
+int				main(int ac, char **av)
 {
 	t_stack	*a;
 	t_stack	*b;
@@ -159,19 +71,19 @@ int		main(int ac, char **av)
 		return (0);
 	if ((a = ft_set_stack(++av, ac - 1)) == NULL)
 	{
-		ft_putstr("Error\n");
+		ft_printf("Error\n");
 		return (0);
 	}
 	ft_print_stack(a, 'a');
 	ft_print_stack(b, 'b');
 	if (!ft_read_input(&a, &b))
 	{
-		ft_putstr("Error\n");
+		ft_printf("Error\n");
 		return (0);
 	}
-	if (ft_is_sort(a))
-		printf("OK\n");
+	if (ft_is_sort(a, b))
+		ft_printf("OK\n");
 	else
-		printf("KO\n");
+		ft_printf("KO\n");
 	return (0);
 }

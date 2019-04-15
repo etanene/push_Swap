@@ -6,28 +6,37 @@
 #    By: afalmer- <afalmer-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/10 17:33:31 by afalmer-          #+#    #+#              #
-#    Updated: 2019/04/13 17:28:22 by afalmer-         ###   ########.fr        #
+#    Updated: 2019/04/15 14:58:24 by afalmer-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CHECKER = ./checker
-SRCDIR_CHECKER = checkerdir/
-SRC_CHECKER = main.c stack.c operations.c
-OBJDIR_CHECKER = checkerdir/obj/
-OBJ_CHECKER = $(addprefix $(OBJDIR_CHECKER), $(SRC_CHECKER:%.c=%.o))
+SRC_CHECKER = checker.c
+OBJ_CHECKER = $(addprefix $(OBJDIR), $(SRC_CHECKER:%.c=%.o))
+
+PUSH_SWAP = ./push_swap
+SRC_PUSH_SWAP = push_swap.c
+OBJ_PUSH_SWAP = $(addprefix $(OBJDIR), $(SRC_PUSH_SWAP:%.c=%.o))
+
+SRC = set_stack.c valid.c stack.c operations.c
+OBJDIR = obj/
+OBJ = $(addprefix $(OBJDIR), $(SRC:%.c=%.o))
 
 LIB = libft/libft.a
 FLAGS = -Wall -Wextra -Werror
 
-all: $(CHECKER)
+all: $(CHECKER) $(PUSH_SWAP)
 
-$(CHECKER): $(LIB) $(OBJDIR_CHECKER) $(OBJ_CHECKER)
-	gcc $(FLAGS) $(OBJ_CHECKER) -L./libft -lft -o $(CHECKER)
+$(CHECKER): $(LIB) $(OBJDIR) $(OBJ_CHECKER) $(OBJ)
+	gcc $(FLAGS) $(OBJ_CHECKER) $(OBJ) -L./libft -lft -o $(CHECKER)
 
-$(OBJDIR_CHECKER):
-	mkdir checkerdir/obj/
+$(PUSH_SWAP): $(LIB) $(OBJDIR) $(OBJ_PUSH_SWAP) $(OBJ)
+	gcc $(FLAGS) $(OBJ_PUSH_SWAP) $(OBJ) -L./libft -lft -o $(PUSH_SWAP)
 
-$(OBJDIR_CHECKER)%.o: $(SRCDIR_CHECKER)%.c
+$(OBJDIR):
+	mkdir obj/
+
+$(OBJDIR)%.o: %.c
 	gcc $(FLAGS) -c $< -o $@ -I . -I ./libft/includes/ -g
 
 $(LIB):
@@ -35,7 +44,7 @@ $(LIB):
 
 clean:
 	make clean -C libft/
-	rm -rf $(OBJDIR_CHECKER)
+	rm -rf $(OBJDIR)
 
 fclean: clean
 	make fclean -C libft/

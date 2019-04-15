@@ -6,11 +6,11 @@
 /*   By: afalmer- <afalmer-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 18:36:02 by afalmer-          #+#    #+#             */
-/*   Updated: 2019/04/13 16:08:08 by afalmer-         ###   ########.fr       */
+/*   Updated: 2019/04/15 14:10:28 by afalmer-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "push_swap.h"
 
 void	ft_push_op(t_stack **from, t_stack **to)
 {

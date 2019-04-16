@@ -6,7 +6,7 @@
 /*   By: afalmer- <afalmer-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/15 14:03:29 by afalmer-          #+#    #+#             */
-/*   Updated: 2019/04/15 15:02:08 by afalmer-         ###   ########.fr       */
+/*   Updated: 2019/04/16 13:41:53 by afalmer-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ int					ft_check_num(int num, char *str);
 int					ft_check_dup(t_stack *stack, int num);
 int					ft_is_sort(t_stack *a, t_stack *b);
 
-void				ft_print_stack(t_stack *stack, char name);
+void				ft_print_stack(t_stack *stack);
+void				ft_print_ab(t_stack *a, t_stack *b);
 void				ft_push(t_stack **stack, t_stack *elem);
 t_stack				*ft_pop(t_stack **stack);
 

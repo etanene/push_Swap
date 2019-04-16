@@ -6,23 +6,28 @@
 /*   By: afalmer- <afalmer-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 17:54:35 by afalmer-          #+#    #+#             */
-/*   Updated: 2019/04/15 14:10:40 by afalmer-         ###   ########.fr       */
+/*   Updated: 2019/04/16 13:41:33 by afalmer-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_print_stack(t_stack *stack, char name)
+void	ft_print_ab(t_stack *a, t_stack *b)
 {
-	if (name)
-		ft_printf("%c |", name);
+	ft_printf("a |");
+	ft_print_stack(a);
+	ft_printf("\nb |");
+	ft_print_stack(b);
+	ft_printf("\n");
+}
+
+void	ft_print_stack(t_stack *stack)
+{
 	if (stack)
 	{
-		ft_print_stack(stack->next, 0);
+		ft_print_stack(stack->next);
 		ft_printf(" %d", stack->value);
 	}
-	if (name)
-		ft_putchar('\n');
 }
 
 t_stack	*ft_create_elem(int num)

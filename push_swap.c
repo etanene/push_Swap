@@ -6,7 +6,7 @@
 /*   By: afalmer- <afalmer-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/13 20:02:29 by afalmer-          #+#    #+#             */
-/*   Updated: 2019/04/22 18:28:39 by afalmer-         ###   ########.fr       */
+/*   Updated: 2019/04/22 18:47:22 by afalmer-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,34 @@
 
 void	ft_sort(t_stack **a, t_stack **b, int size);
 void	ft_revsort(t_stack **b, t_stack **a, int size);
+
+int		ft_is_sort_size(t_stack *stack, int size, int direct)
+{
+	while (stack->next)
+	{
+		if (direct == ASC && stack->value > stack->next->value)
+			return (0);
+		else if (direct == DESC && stack->value < stack->next->value)
+			return (0);
+		stack = stack->next;
+	}
+	return (1);
+}
+
+void	ft_sort3(t_stack **stack, int size, int direct)
+{
+	int		max;
+	int		min;
+
+	if (!*stack || ft_is_sort_size(*stack, size, direct))
+		return ;
+	max = (*stack)->value;
+	min = max;
+	while ((*stack)->next)
+	{
+		
+	}
+}
 
 void	ft_revsort(t_stack **b, t_stack **a, int size)
 {

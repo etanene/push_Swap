@@ -6,7 +6,7 @@
 #    By: afalmer- <afalmer-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/10 17:33:31 by afalmer-          #+#    #+#              #
-#    Updated: 2019/04/15 14:58:24 by afalmer-         ###   ########.fr        #
+#    Updated: 2019/04/22 18:26:11 by afalmer-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ SRC_CHECKER = checker.c
 OBJ_CHECKER = $(addprefix $(OBJDIR), $(SRC_CHECKER:%.c=%.o))
 
 PUSH_SWAP = ./push_swap
-SRC_PUSH_SWAP = push_swap.c
+SRC_PUSH_SWAP = push_swap.c get_median.c
 OBJ_PUSH_SWAP = $(addprefix $(OBJDIR), $(SRC_PUSH_SWAP:%.c=%.o))
 
 SRC = set_stack.c valid.c stack.c operations.c

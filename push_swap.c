@@ -6,7 +6,7 @@
 /*   By: afalmer- <afalmer-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/13 20:02:29 by afalmer-          #+#    #+#             */
-/*   Updated: 2019/04/19 19:17:32 by afalmer-         ###   ########.fr       */
+/*   Updated: 2019/04/22 15:00:25 by afalmer-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,67 @@
 
 void	ft_sort(t_stack **a, t_stack **b, int size);
 void	ft_revsort(t_stack **b, t_stack **a, int size);
+
+int		*ft_set_arr(t_stack *stack, int size)
+{
+	int		*res;
+	int		i;
+
+	res = (int*)malloc(sizeof(int) * size);
+	i = 0;
+	while (i < size)
+	{
+		res[i] = stack->value;
+		stack = stack->next;
+		i++;
+	}
+	return (res);
+}
+
+int		ft_partition(int *arr, int left, int right)
+{
+	int		pivot;
+	int		temp;
+
+	pivot = arr[(left + right) / 2];
+	while (left < right)
+	{
+		while (arr[left] < pivot)
+			left++;
+		while (arr[right] > pivot)
+			right--;
+		if (left == right)
+			break ;
+		temp = arr[left];
+		arr[left] = arr[right];
+		arr[right] = temp;
+	}
+	return (left);
+}
+
+int		ft_quickselect_median(int *arr, int left, int right, int ind)
+{
+	int		pivot;
+
+	pivot = ft_partition(arr, left, right);
+	if (pivot == ind)
+		return (arr[pivot]);
+	else if (pivot < ind)
+		return (ft_quickselect_median(arr, left, pivot - 1, ind));
+	else
+		return (ft_quickselect_median(arr, pivot + 1, right, ind));
+}
+
+int		ft_get_median(t_stack *stack, int size)
+{
+	int		*arr;
+	int		median;
+
+	arr = ft_set_arr(stack, size);
+	median = ft_quickselect_median(arr, 0, size - 1, size / 2);
+	free(arr);
+	return (median);
+}
 
 void	ft_revsort(t_stack **b, t_stack **a, int size)
 {
@@ -90,8 +151,8 @@ void	ft_sort(t_stack **a, t_stack **b, int size)
 	asize = 0;
 	bsize = 0;
 	pivot = (*a)->value;
-	// ft_printf("START\n");
-	// ft_printf("pivot: %d\n", pivot);
+	ft_printf("START\n");
+	ft_printf("pivot: %d\n", pivot);
 	// ft_printf("size: %d\n", size);
 	// ft_print_ab(*a, *b);
 	if (size < 2)
@@ -137,26 +198,6 @@ void	ft_sort(t_stack **a, t_stack **b, int size)
 	ft_revsort(b, a, bsize);
 }
 
-int		ft_is_sort_size(t_stack *stack, int size)
-{
-	while (stack->next && size--)
-	{
-		if (stack->value > stack->next->value)
-			return (0);
-		stack = stack->next;
-	}
-	return (1);
-}
-
-void	ft_sort_size(t_stack **stack, int size)
-{
-	while (!ft_is_sort_size(*stack, size))
-	{
-		ft_swap_op(stack);
-		ft_printf("sa\n");
-	}
-}
-
 int		main(int ac, char **av)
 {
 	t_stack	*a;
@@ -171,10 +212,8 @@ int		main(int ac, char **av)
 		return (0);
 	}
 	ft_print_ab(a, b);
-	ft_sort3(&a);
+	ft_sort(&a, &b, ac - 1);
+	ft_printf("END\n");
 	ft_print_ab(a, b);
-	// ft_sort(&a, &b, ac - 1);
-	// ft_printf("END\n");
-	// ft_print_ab(a, b);
 	return (0);
 }

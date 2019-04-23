@@ -6,7 +6,7 @@
 /*   By: afalmer- <afalmer-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/13 20:02:29 by afalmer-          #+#    #+#             */
-/*   Updated: 2019/04/22 18:47:22 by afalmer-         ###   ########.fr       */
+/*   Updated: 2019/04/23 20:14:48 by afalmer-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,19 +30,67 @@ int		ft_is_sort_size(t_stack *stack, int size, int direct)
 	return (1);
 }
 
-void	ft_sort3(t_stack **stack, int size, int direct)
-{
-	int		max;
-	int		min;
+// void	ft_sort3(t_stack **stack, int size, int direct)
+// {
+// 	int		max;
+// 	int		min;
+// 	t_stack	*temp;
 
-	if (!*stack || ft_is_sort_size(*stack, size, direct))
-		return ;
-	max = (*stack)->value;
-	min = max;
-	while ((*stack)->next)
-	{
+// 	if (!*stack || ft_is_sort_size(*stack, size, direct))
+// 		return ;
+// 	max = (*stack)->value;
+// 	min = max;
+// 	temp = *stack;
+// 	while (size--)
+// 	{
+// 		if (temp->value > max)
+// 			max = temp->value;
+// 		else if (temp->value < min)
+// 			min = temp->value;
+// 		temp = temp->next;
+// 	}
+// 	if (max == (*stack)->value && min == (*stack)->next->value)
+// 		ft_swap_op(stack);
+// 	else if (min == (*stack)->value && max == (*stack)->next->value)
+// 	{
+// 		ft_swap_op(stack);
 		
+// 	}
+// 	else if ()
+// }
+
+int		*ft_get_shifts(t_stack *stack, int size)
+{
+	int		*shifts;
+	int		*arr;
+	int		i;
+	int		j;
+
+	arr = ft_set_arr(stack, size);
+	shifts = (int*)malloc(sizeof(int) * size);
+	i = 0;
+	while (i < size)
+	{
+		j = 0;
+		while (j < size)
+		{
+			if (arr[i] == ft_quickselect(arr, 0, size - 1, j))
+			{
+				break ;
+			}
+			j++;
+		}
+		shifts[i] = i - j;
+		i++;
 	}
+	return (shifts);
+}
+
+void	ft_sort_size(t_stack **stack, int size, int direct)
+{
+	int		*shifts;
+
+	shifts = ft_get_shifts(*stack, size);
 }
 
 void	ft_revsort(t_stack **b, t_stack **a, int size)

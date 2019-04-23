@@ -6,7 +6,7 @@
 /*   By: afalmer- <afalmer-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/22 18:24:01 by afalmer-          #+#    #+#             */
-/*   Updated: 2019/04/22 18:24:35 by afalmer-         ###   ########.fr       */
+/*   Updated: 2019/04/23 18:57:38 by afalmer-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int		ft_partition(int *arr, int left, int right)
 	return (left);
 }
 
-int		ft_quickselect_median(int *arr, int left, int right, int ind)
+int		ft_quickselect(int *arr, int left, int right, int ind)
 {
 	int		pivot;
 
@@ -57,9 +57,9 @@ int		ft_quickselect_median(int *arr, int left, int right, int ind)
 	if (pivot == ind)
 		return (arr[pivot]);
 	else if (pivot > ind)
-		return (ft_quickselect_median(arr, left, pivot - 1, ind));
+		return (ft_quickselect(arr, left, pivot - 1, ind));
 	else
-		return (ft_quickselect_median(arr, pivot + 1, right, ind));
+		return (ft_quickselect(arr, pivot + 1, right, ind));
 }
 
 int		ft_get_median(t_stack *stack, int size)
@@ -68,7 +68,7 @@ int		ft_get_median(t_stack *stack, int size)
 	int		median;
 
 	arr = ft_set_arr(stack, size);
-	median = ft_quickselect_median(arr, 0, size - 1, size / 2);
+	median = ft_quickselect(arr, 0, size - 1, size / 2);
 	free(arr);
 	return (median);
 }

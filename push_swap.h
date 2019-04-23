@@ -6,7 +6,7 @@
 /*   By: afalmer- <afalmer-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/15 14:03:29 by afalmer-          #+#    #+#             */
-/*   Updated: 2019/04/22 18:25:34 by afalmer-         ###   ########.fr       */
+/*   Updated: 2019/04/23 18:51:30 by afalmer-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,7 @@ void				ft_rotate_op(t_stack **stack);
 void				ft_revrotate_op(t_stack **stack);
 
 int					ft_get_median(t_stack *stack, int size);
+int					ft_quickselect(int *arr, int left, int right, int ind);
+int					*ft_set_arr(t_stack *stack, int size);
 
 #endif

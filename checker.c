@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afalmer- <afalmer-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aleksandr <aleksandr@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 19:19:19 by afalmer-          #+#    #+#             */
-/*   Updated: 2019/04/15 15:01:35 by afalmer-         ###   ########.fr       */
+/*   Updated: 2019/04/20 20:22:11 by aleksandr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,6 @@ static int		ft_read_input(t_stack **a, t_stack **b)
 			return (0);
 		}
 		ft_strdel(&op);
-		ft_print_stack(*a, 'a');
-		ft_print_stack(*b, 'b');
 	}
 	return (1);
 }
@@ -74,8 +72,6 @@ int				main(int ac, char **av)
 		ft_printf("Error\n");
 		return (0);
 	}
-	ft_print_stack(a, 'a');
-	ft_print_stack(b, 'b');
 	if (!ft_read_input(&a, &b))
 	{
 		ft_printf("Error\n");

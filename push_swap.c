@@ -6,7 +6,7 @@
 /*   By: afalmer- <afalmer-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/13 20:02:29 by afalmer-          #+#    #+#             */
-/*   Updated: 2019/04/24 20:32:25 by afalmer-         ###   ########.fr       */
+/*   Updated: 2019/04/25 13:28:32 by afalmer-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,13 @@ void	ft_sort3(t_stack **main, t_stack **off, int size, int direct)
 		{
 			ft_swap_op(main);
 			ft_printf("sa\n");
-			// ft_print_ab(*a, *b);
+			ft_print_ab(*main, *off);
 		}
 		else if (offsize)
 		{
 			ft_push_op(off, main);
 			ft_printf("pa\n");
-			// ft_print_ab(*a, *b);
+			ft_print_ab(*main, *off);
 			offsize--;
 			size++;
 		}
@@ -53,7 +53,7 @@ void	ft_sort3(t_stack **main, t_stack **off, int size, int direct)
 		{
 			ft_push_op(main, off);
 			ft_printf("pb\n");
-			// ft_print_ab(*a, *b);
+			ft_print_ab(*main, *off);
 			offsize++;
 			size--;
 		}
@@ -114,12 +114,17 @@ int		main(int ac, char **av)
 		ft_printf("Error\n");
 		return (0);
 	}
-	// ft_printf("START\n");
-	// ft_print_ab(a, b);
-	if (ac < 5)
+	ft_printf("START\n");
+	ft_print_ab(a, b);
+	if (ac < 4)
+	{
 		ft_sort3(&a, &b, ac - 1, ASC);
-	ft_qsort(&a, &b, ac - 1);
-	// ft_printf("END\n");
-	// ft_print_ab(a, b);
+	}
+	else
+	{
+		ft_qsort(&a, &b, ac - 1);
+	}
+	ft_printf("END\n");
+	ft_print_ab(a, b);
 	return (0);
 }

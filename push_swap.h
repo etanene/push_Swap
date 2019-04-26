@@ -6,7 +6,7 @@
 /*   By: afalmer- <afalmer-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/15 14:03:29 by afalmer-          #+#    #+#             */
-/*   Updated: 2019/04/24 20:29:11 by afalmer-         ###   ########.fr       */
+/*   Updated: 2019/04/26 16:38:15 by afalmer-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct		s_stack
 
 t_stack				*ft_set_stack(char **av, int ac);
 t_stack				*ft_create_elem(int num);
+int					ft_stack_size(t_stack *stack);
 
 int					ft_check_num(int num, char *str);
 int					ft_check_dup(t_stack *stack, int num);
@@ -43,7 +44,9 @@ void				ft_revrotate_op(t_stack **stack);
 
 void				ft_qsort(t_stack **a, t_stack **b, int size);
 void				ft_revqsort(t_stack **b, t_stack **a, int size);
-void				ft_sort3(t_stack **main, t_stack **off, int size, int direct);
+void				ft_sort3(t_stack **a, t_stack **b, int size);
+void				ft_revsort3(t_stack **a, t_stack **b, int size);
+void				ft_revsort_size(t_stack **b, t_stack **a, int bsize);
 
 int					ft_is_sort_size(t_stack *stack, int size, int direct);
 

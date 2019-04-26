@@ -6,7 +6,7 @@
 /*   By: afalmer- <afalmer-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/13 20:02:29 by afalmer-          #+#    #+#             */
-/*   Updated: 2019/04/25 13:28:32 by afalmer-         ###   ########.fr       */
+/*   Updated: 2019/04/26 17:07:50 by afalmer-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 
 int		ft_is_sort_size(t_stack *stack, int size, int direct)
 {
+	if (size == 0)
+		return (1);
 	while (--size)
 	{
 		if (direct == ASC && stack->value > stack->next->value)
@@ -27,33 +29,109 @@ int		ft_is_sort_size(t_stack *stack, int size, int direct)
 	return (1);
 }
 
-void	ft_sort3(t_stack **main, t_stack **off, int size, int direct)
+void	ft_revsort_size(t_stack **b, t_stack **a, int bsize)
+{
+	int		asize;
+	int		swap;
+
+	asize = 0;
+	swap = 0;
+	// ft_printf("size: %d\n", bsize);
+	// ft_print_ab(*a, *b);
+	while (bsize > 0)
+	{
+		if (!ft_is_sort_size(*a, asize, ASC))
+		{
+			if (!swap)
+			{
+				ft_swap_op(a);
+				ft_printf("sa\n");
+				// ft_print_ab(*a, *b);
+				swap = 1;
+			}
+			else
+			{
+				ft_push_op(a, b);
+				ft_printf("pb\n");
+				// ft_print_ab(*a, *b);
+				swap = 0;
+				bsize++;
+				asize--;
+			}
+		}
+		else if (bsize > 1 && (*b)->value < (*b)->next->value)
+		{
+			ft_swap_op(b);
+			ft_printf("sb\n");
+			// ft_print_ab(*a, *b);
+		}
+		else
+		{
+			ft_push_op(b, a);
+			ft_printf("pa\n");
+			// ft_print_ab(*a, *b);
+			asize++;
+			bsize--;
+		}
+	}
+}
+
+void	ft_revsort3(t_stack **b, t_stack **a, int bsize)
+{
+	int		asize;
+
+	asize = 0;
+	while (bsize > 0)
+	{
+		if (asize == 2 && (*a)->value > (*a)->next->value)
+		{
+			ft_swap_op(a);
+			ft_printf("sa\n");
+			// ft_print_ab(*a, *b);
+		}
+		if (bsize > 1 && (*b)->value < (*b)->next->value)
+		{
+			ft_swap_op(b);
+			ft_printf("sb\n");
+			// ft_print_ab(*a, *b);
+		}
+		else
+		{
+			ft_push_op(b, a);
+			ft_printf("pa\n");
+			// ft_print_ab(*a, *b);
+			bsize--;
+			asize++;
+		}
+	}
+}
+
+void	ft_sort3(t_stack **a, t_stack **b, int size)
 {
 	int		offsize;
 
 	offsize = 0;
-	while (!ft_is_sort_size(*main, size, direct) || offsize)
+	while (!ft_is_sort_size(*a, size, ASC) || offsize)
 	{
-		if ((direct == ASC && (*main)->value > (*main)->next->value) ||
-			(direct == DESC && (*main)->value < (*main)->next->value))
+		if ((*a)->value > (*a)->next->value)
 		{
-			ft_swap_op(main);
+			ft_swap_op(a);
 			ft_printf("sa\n");
-			ft_print_ab(*main, *off);
+			// ft_print_ab(*a, *b);
 		}
 		else if (offsize)
 		{
-			ft_push_op(off, main);
+			ft_push_op(b, a);
 			ft_printf("pa\n");
-			ft_print_ab(*main, *off);
+			// ft_print_ab(*a, *b);
 			offsize--;
 			size++;
 		}
 		else
 		{
-			ft_push_op(main, off);
+			ft_push_op(a, b);
 			ft_printf("pb\n");
-			ft_print_ab(*main, *off);
+			// ft_print_ab(*a, *b);
 			offsize++;
 			size--;
 		}
@@ -114,17 +192,20 @@ int		main(int ac, char **av)
 		ft_printf("Error\n");
 		return (0);
 	}
-	ft_printf("START\n");
-	ft_print_ab(a, b);
+	// ft_printf("START\n");
+	// ft_print_ab(a, b);
+	ac = (ac == 2) ? ft_stack_size(a) : ac - 1;
+	// ft_revsort_size(&a, &b, ac);
+	// ft_revqsort(&a, &b, ac);
 	if (ac < 4)
 	{
-		ft_sort3(&a, &b, ac - 1, ASC);
+		ft_sort3(&a, &b, ac);
 	}
 	else
 	{
-		ft_qsort(&a, &b, ac - 1);
+		ft_qsort(&a, &b, ac);
 	}
-	ft_printf("END\n");
-	ft_print_ab(a, b);
+	// ft_printf("END\n");
+	// ft_print_ab(a, b);
 	return (0);
 }

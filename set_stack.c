@@ -6,11 +6,24 @@
 /*   By: afalmer- <afalmer-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/15 14:07:36 by afalmer-          #+#    #+#             */
-/*   Updated: 2019/04/15 14:26:30 by afalmer-         ###   ########.fr       */
+/*   Updated: 2019/04/26 13:14:39 by afalmer-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int		ft_stack_size(t_stack *stack)
+{
+	int		size;
+
+	size = 0;
+	while (stack)
+	{
+		size++;
+		stack = stack->next;
+	}
+	return (size);
+}
 
 static t_stack	*ft_add_num(char *str, t_stack **stack)
 {

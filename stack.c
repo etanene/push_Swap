@@ -6,7 +6,7 @@
 /*   By: afalmer- <afalmer-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 17:54:35 by afalmer-          #+#    #+#             */
-/*   Updated: 2019/04/16 13:41:33 by afalmer-         ###   ########.fr       */
+/*   Updated: 2019/04/27 15:18:34 by afalmer-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,11 @@ t_stack	*ft_create_elem(int num)
 
 void	ft_push(t_stack **stack, t_stack *elem)
 {
-	elem->next = *stack;
-	*stack = elem;
+	if (elem)
+	{
+		elem->next = *stack;
+		*stack = elem;
+	}
 }
 
 t_stack	*ft_pop(t_stack **stack)

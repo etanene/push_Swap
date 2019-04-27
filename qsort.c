@@ -6,26 +6,13 @@
 /*   By: afalmer- <afalmer-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 15:04:16 by afalmer-          #+#    #+#             */
-/*   Updated: 2019/04/27 14:33:46 by afalmer-         ###   ########.fr       */
+/*   Updated: 2019/04/27 15:57:44 by afalmer-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int		ft_check_stack(t_stack *stack, int pivot, int size, int direct)
-{
-	while (size--)
-	{
-		if (direct == ASC && stack->value < pivot)
-			return (0);
-		else if (direct == DESC && stack->value > pivot)
-			return (0);
-		stack = stack->next;
-	}
-	return (1);
-}
-
-void	ft_revqsort(t_stack **b, t_stack **a, int size)
+void	ft_revqsort(t_stack **b, t_stack **a, int size, int print)
 {
 	int		bsize;
 	int		asize;
@@ -41,15 +28,13 @@ void	ft_revqsort(t_stack **b, t_stack **a, int size)
 	{
 		while (size--)
 		{
-			ft_push_op(b, a);
-			ft_printf("pa\n");
-			// ft_print_ab(*a, *b);
+			ft_push_op(b, a, 'a', print);
 		}
 		return ;
 	}
 	if (size <= 3)
 	{
-		ft_revsort3(b, a, size);
+		ft_revsort3(b, a, size, print);
 		return ;
 	}
 	i = 0;
@@ -57,33 +42,27 @@ void	ft_revqsort(t_stack **b, t_stack **a, int size)
 	{
 		if ((*b)->value > pivot)
 		{
-			ft_push_op(b, a);
+			ft_push_op(b, a, 'a', print);
 			asize++;
-			ft_printf("pa\n");
-			// ft_print_ab(*a, *b);
 		}
 		else
 		{
-			ft_rotate_op(b);
+			ft_rotate_op(b, a, 'b', print);
 			bsize++;
-			ft_printf("rb\n");
-			// ft_print_ab(*a, *b);
 		}
 		size--;
 	}
 	i = 0;
 	while (is_rr && i++ < bsize)
 	{
-		ft_revrotate_op(b);
-		ft_printf("rrb\n");
-		// ft_print_ab(*a, *b);
+		ft_revrotate_op(b, a, 'b', print);
 	}
 	bsize += size;
-	ft_qsort(a, b, asize);
-	ft_revqsort(b, a, bsize);
+	ft_qsort(a, b, asize, print);
+	ft_revqsort(b, a, bsize, print);
 }
 
-void	ft_qsort(t_stack **a, t_stack **b, int size)
+void	ft_qsort(t_stack **a, t_stack **b, int size, int print)
 {
 	int		asize;
 	int		bsize;
@@ -101,11 +80,11 @@ void	ft_qsort(t_stack **a, t_stack **b, int size)
 	{
 		if (!is_rr)
 		{
-			ft_sort3_local(a, size);
+			ft_sort3_local(a, b, size, print);
 		}
 		else
 		{
-			ft_sort3(a, b, size);
+			ft_sort3(a, b, size, print);
 		}
 		return ;
 	}
@@ -114,29 +93,22 @@ void	ft_qsort(t_stack **a, t_stack **b, int size)
 	{
 		if ((*a)->value < pivot)
 		{
-			ft_push_op(a, b);
+			ft_push_op(a, b, 'b', print);
 			bsize++;
-			ft_printf("pb\n");
-			// ft_print_ab(*a, *b);
 		}
 		else
 		{
-			ft_rotate_op(a);
+			ft_rotate_op(a, b, 'a', print);
 			asize++;
-			ft_printf("ra\n");
-			// ft_print_ab(*a, *b);
 		}
 		size--;
-		// ft_printf("size: %d\n", size);
 	}
 	i = 0;
 	while (is_rr && i++ < asize)
 	{
-		ft_revrotate_op(a);
-		ft_printf("rra\n");
-		// ft_print_ab(*a, *b);
+		ft_revrotate_op(a, b, 'a', print);
 	}
 	asize += size;
-	ft_qsort(a, b, asize);
-	ft_revqsort(b, a, bsize);
+	ft_qsort(a, b, asize, print);
+	ft_revqsort(b, a, bsize, print);
 }

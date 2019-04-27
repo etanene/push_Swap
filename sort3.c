@@ -6,7 +6,7 @@
 /*   By: afalmer- <afalmer-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 14:38:21 by afalmer-          #+#    #+#             */
-/*   Updated: 2019/04/27 14:40:01 by afalmer-         ###   ########.fr       */
+/*   Updated: 2019/04/27 15:57:06 by afalmer-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,34 +40,31 @@ int		ft_get_max(t_stack *stack)
 	return (max);
 }
 
-void	ft_sort3_local(t_stack **stack, int size)
+void	ft_sort3_local(t_stack **a, t_stack **b, int size, int print)
 {
 	int		max;
 	int		min;
 
-	min = ft_get_min(*stack);
-	max = ft_get_max(*stack);
-	while (!ft_is_sort_size(*stack, size, ASC))
+	min = ft_get_min(*a);
+	max = ft_get_max(*a);
+	while (!ft_is_sort_size(*a, size, ASC))
 	{
-		if ((*stack)->value == max)
+		if ((*a)->value == max)
 		{
-			ft_rotate_op(stack);
-			ft_printf("ra\n");
+			ft_rotate_op(a, b, 'a', print);
 		}
-		else if ((*stack)->next->value == max)
+		else if ((*a)->next->value == max)
 		{
-			ft_revrotate_op(stack);
-			ft_printf("rra\n");
+			ft_revrotate_op(a, b, 'a', print);
 		}
-		else if ((*stack)->value != min && (*stack)->value != max)
+		else if ((*a)->value != min && (*a)->value != max)
 		{
-			ft_swap_op(stack);
-			ft_printf("sa\n");
+			ft_swap_op(a, b, 'a', print);
 		}
 	}
 }
 
-void	ft_revsort3(t_stack **b, t_stack **a, int bsize)
+void	ft_revsort3(t_stack **b, t_stack **a, int bsize, int print)
 {
 	int		asize;
 
@@ -76,28 +73,22 @@ void	ft_revsort3(t_stack **b, t_stack **a, int bsize)
 	{
 		if (asize == 2 && (*a)->value > (*a)->next->value)
 		{
-			ft_swap_op(a);
-			ft_printf("sa\n");
-			// ft_print_ab(*a, *b);
+			ft_swap_op(a, b, 'a', print);
 		}
 		if (bsize > 1 && (*b)->value < (*b)->next->value)
 		{
-			ft_swap_op(b);
-			ft_printf("sb\n");
-			// ft_print_ab(*a, *b);
+			ft_swap_op(b, a, 'b', print);
 		}
 		else
 		{
-			ft_push_op(b, a);
-			ft_printf("pa\n");
-			// ft_print_ab(*a, *b);
+			ft_push_op(b, a, 'a', print);
 			bsize--;
 			asize++;
 		}
 	}
 }
 
-void	ft_sort3(t_stack **a, t_stack **b, int size)
+void	ft_sort3(t_stack **a, t_stack **b, int size, int print)
 {
 	int		offsize;
 
@@ -106,23 +97,17 @@ void	ft_sort3(t_stack **a, t_stack **b, int size)
 	{
 		if ((*a)->value > (*a)->next->value)
 		{
-			ft_swap_op(a);
-			ft_printf("sa\n");
-			// ft_print_ab(*a, *b);
+			ft_swap_op(a, b, 'a', print);
 		}
 		else if (offsize)
 		{
-			ft_push_op(b, a);
-			ft_printf("pa\n");
-			// ft_print_ab(*a, *b);
+			ft_push_op(b, a, 'a', print);
 			offsize--;
 			size++;
 		}
 		else
 		{
-			ft_push_op(a, b);
-			ft_printf("pb\n");
-			// ft_print_ab(*a, *b);
+			ft_push_op(a, b, 'b', print);
 			offsize++;
 			size--;
 		}

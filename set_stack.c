@@ -6,13 +6,13 @@
 /*   By: afalmer- <afalmer-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/15 14:07:36 by afalmer-          #+#    #+#             */
-/*   Updated: 2019/04/27 17:00:29 by afalmer-         ###   ########.fr       */
+/*   Updated: 2019/04/27 19:59:29 by afalmer-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int		ft_stack_size(t_stack *stack)
+int				ft_stack_size(t_stack *stack)
 {
 	int		size;
 

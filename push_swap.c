@@ -6,7 +6,7 @@
 /*   By: afalmer- <afalmer-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/13 20:02:29 by afalmer-          #+#    #+#             */
-/*   Updated: 2019/04/27 18:28:58 by afalmer-         ###   ########.fr       */
+/*   Updated: 2019/04/27 19:34:08 by afalmer-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_sort_print(t_stack **a, t_stack **b, int ac, int print)
 		ft_print_ab(*a, *b);
 	}
 	if (ac <= 3)
-		ft_sort3_local(a, b, ac, print);
+		ft_sortl(a, b, ac, print);
 	else
 		ft_qsort(a, b, ac, print);
 	if (print)

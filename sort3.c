@@ -6,7 +6,7 @@
 /*   By: afalmer- <afalmer-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 14:38:21 by afalmer-          #+#    #+#             */
-/*   Updated: 2019/04/27 16:50:04 by afalmer-         ###   ########.fr       */
+/*   Updated: 2019/04/27 19:32:57 by afalmer-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int		ft_get_max(t_stack *stack)
 	return (max);
 }
 
-void	ft_sort3_local(t_stack **a, t_stack **b, int size, int print)
+void	ft_sortl(t_stack **a, t_stack **b, int size, int print)
 {
 	int		max;
 	int		min;

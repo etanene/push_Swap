@@ -6,7 +6,7 @@
 /*   By: afalmer- <afalmer-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 18:36:02 by afalmer-          #+#    #+#             */
-/*   Updated: 2019/04/27 16:47:36 by afalmer-         ###   ########.fr       */
+/*   Updated: 2019/04/27 19:59:12 by afalmer-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void	ft_revrotate_op(t_stack **main, t_stack **off, char op, int print)
 	if (*main && (*main)->next)
 	{
 		end = *main;
-		while(end->next->next)
+		while (end->next->next)
 			end = end->next;
 		end->next->next = *main;
 		*main = end->next;

@@ -6,7 +6,7 @@
 /*   By: afalmer- <afalmer-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/15 14:03:29 by afalmer-          #+#    #+#             */
-/*   Updated: 2019/04/26 16:38:15 by afalmer-         ###   ########.fr       */
+/*   Updated: 2019/04/27 14:18:07 by afalmer-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void				ft_revqsort(t_stack **b, t_stack **a, int size);
 void				ft_sort3(t_stack **a, t_stack **b, int size);
 void				ft_revsort3(t_stack **a, t_stack **b, int size);
 void				ft_revsort_size(t_stack **b, t_stack **a, int bsize);
+void				ft_sort3_local(t_stack **stack, int size);
 
 int					ft_is_sort_size(t_stack *stack, int size, int direct);
 

@@ -6,7 +6,7 @@
 /*   By: afalmer- <afalmer-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/15 14:03:29 by afalmer-          #+#    #+#             */
-/*   Updated: 2019/04/27 14:18:07 by afalmer-         ###   ########.fr       */
+/*   Updated: 2019/04/27 14:47:56 by afalmer-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,13 @@ typedef struct		s_stack
 }					t_stack;
 
 t_stack				*ft_set_stack(char **av, int ac);
-t_stack				*ft_create_elem(int num);
 int					ft_stack_size(t_stack *stack);
+t_stack				*ft_create_elem(int num);
+
+
+
+
+
 
 int					ft_check_num(int num, char *str);
 int					ft_check_dup(t_stack *stack, int num);

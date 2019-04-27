@@ -6,18 +6,11 @@
 /*   By: afalmer- <afalmer-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/15 14:07:36 by afalmer-          #+#    #+#             */
-/*   Updated: 2019/04/27 15:59:11 by afalmer-         ###   ########.fr       */
+/*   Updated: 2019/04/27 17:00:29 by afalmer-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int		ft_check_option(char *option)
-{
-	if (ft_strnstr(option, "-v", 3))
-		return (1);
-	return (0);
-}
 
 int		ft_stack_size(t_stack *stack)
 {

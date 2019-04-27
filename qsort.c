@@ -6,7 +6,7 @@
 /*   By: afalmer- <afalmer-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 15:04:16 by afalmer-          #+#    #+#             */
-/*   Updated: 2019/04/27 15:57:44 by afalmer-         ###   ########.fr       */
+/*   Updated: 2019/04/27 16:51:20 by afalmer-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,7 @@ void	ft_revqsort(t_stack **b, t_stack **a, int size, int print)
 	if (ft_is_sort_size(*b, size, DESC))
 	{
 		while (size--)
-		{
 			ft_push_op(b, a, 'a', print);
-		}
 		return ;
 	}
 	if (size <= 3)
@@ -54,9 +52,7 @@ void	ft_revqsort(t_stack **b, t_stack **a, int size, int print)
 	}
 	i = 0;
 	while (is_rr && i++ < bsize)
-	{
 		ft_revrotate_op(b, a, 'b', print);
-	}
 	bsize += size;
 	ft_qsort(a, b, asize, print);
 	ft_revqsort(b, a, bsize, print);
@@ -79,13 +75,9 @@ void	ft_qsort(t_stack **a, t_stack **b, int size, int print)
 	if (size <= 3)
 	{
 		if (!is_rr)
-		{
 			ft_sort3_local(a, b, size, print);
-		}
 		else
-		{
 			ft_sort3(a, b, size, print);
-		}
 		return ;
 	}
 	i = 0;
@@ -105,9 +97,7 @@ void	ft_qsort(t_stack **a, t_stack **b, int size, int print)
 	}
 	i = 0;
 	while (is_rr && i++ < asize)
-	{
 		ft_revrotate_op(a, b, 'a', print);
-	}
 	asize += size;
 	ft_qsort(a, b, asize, print);
 	ft_revqsort(b, a, bsize, print);

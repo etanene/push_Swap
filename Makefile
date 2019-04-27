@@ -6,7 +6,7 @@
 #    By: afalmer- <afalmer-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/10 17:33:31 by afalmer-          #+#    #+#              #
-#    Updated: 2019/04/27 14:39:13 by afalmer-         ###   ########.fr        #
+#    Updated: 2019/04/27 17:00:51 by afalmer-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ PUSH_SWAP = ./push_swap
 SRC_PUSH_SWAP = push_swap.c get_median.c qsort.c sort3.c
 OBJ_PUSH_SWAP = $(addprefix $(OBJDIR), $(SRC_PUSH_SWAP:%.c=%.o))
 
-SRC = set_stack.c check.c stack.c operations.c
+SRC = set_stack.c check.c stack.c operations.c shared.c
 OBJDIR = obj/
 OBJ = $(addprefix $(OBJDIR), $(SRC:%.c=%.o))
 

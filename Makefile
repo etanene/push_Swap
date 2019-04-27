@@ -6,7 +6,7 @@
 #    By: afalmer- <afalmer-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/10 17:33:31 by afalmer-          #+#    #+#              #
-#    Updated: 2019/04/27 17:00:51 by afalmer-         ###   ########.fr        #
+#    Updated: 2019/04/27 20:04:08 by afalmer-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ $(OBJDIR):
 	mkdir obj/
 
 $(OBJDIR)%.o: %.c
-	gcc $(FLAGS) -c $< -o $@ -I . -I ./libft/includes/ -g
+	gcc $(FLAGS) -c $< -o $@ -I . -I ./libft/includes/
 
 $(LIB):
 	make -C libft/

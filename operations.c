@@ -6,7 +6,7 @@
 /*   By: afalmer- <afalmer-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 18:36:02 by afalmer-          #+#    #+#             */
-/*   Updated: 2019/04/27 15:48:16 by afalmer-         ###   ########.fr       */
+/*   Updated: 2019/04/27 16:47:36 by afalmer-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ void	ft_push_op(t_stack **from, t_stack **to, char op, int print)
 
 	if ((elem = ft_pop(from)))
 		ft_push(to, elem);
-	if (op)
+	if (print >= 0)
 		ft_printf("p%c\n", op);
-	if (print && op == 'a')
+	if ((print == 1 || print == -1) && op == 'a')
 		ft_print_ab(*to, *from);
-	else if (print && op == 'b')
+	else if ((print == 1 || print == -1) && op == 'b')
 		ft_print_ab(*from, *to);
 }
 
@@ -41,11 +41,11 @@ void	ft_swap_op(t_stack **main, t_stack **off, char op, int print)
 		else
 			ft_push(main, first);
 	}
-	if (op)
+	if (print >= 0)
 		ft_printf("s%c\n", op);
-	if (print && op == 'a')
+	if ((print == 1 || print == -1) && op == 'a')
 		ft_print_ab(*main, *off);
-	else if (print && op == 'b')
+	else if ((print == 1 || print == -1) && op == 'b')
 		ft_print_ab(*off, *main);
 }
 
@@ -62,11 +62,11 @@ void	ft_rotate_op(t_stack **main, t_stack **off, char op, int print)
 		*main = (*main)->next;
 		end->next->next = NULL;
 	}
-	if (op)
+	if (print >= 0)
 		ft_printf("r%c\n", op);
-	if (print && op == 'a')
+	if ((print == 1 || print == -1) && op == 'a')
 		ft_print_ab(*main, *off);
-	else if (print && op == 'b')
+	else if ((print == 1 || print == -1) && op == 'b')
 		ft_print_ab(*off, *main);
 }
 
@@ -83,10 +83,10 @@ void	ft_revrotate_op(t_stack **main, t_stack **off, char op, int print)
 		*main = end->next;
 		end->next = NULL;
 	}
-	if (op)
+	if (print >= 0)
 		ft_printf("rr%c\n", op);
-	if (print && op == 'a')
+	if ((print == 1 || print == -1) && op == 'a')
 		ft_print_ab(*main, *off);
-	else if (print && op == 'b')
+	else if ((print == 1 || print == -1) && op == 'b')
 		ft_print_ab(*off, *main);
 }

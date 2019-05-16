@@ -6,7 +6,7 @@
 /*   By: afalmer- <afalmer-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/21 11:53:56 by afalmer-          #+#    #+#             */
-/*   Updated: 2019/04/13 17:05:01 by afalmer-         ###   ########.fr       */
+/*   Updated: 2019/05/16 15:24:47 by afalmer-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,5 +92,6 @@ t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 int					ft_pow(int base, int power);
 int					ft_unumlen(unsigned long long num, int base);
 int					ft_numlen(long long num);
+void				ft_free_multiarr(char **arr);
 
 #endif

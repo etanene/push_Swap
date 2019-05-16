@@ -6,7 +6,7 @@
 /*   By: afalmer- <afalmer-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/15 14:07:36 by afalmer-          #+#    #+#             */
-/*   Updated: 2019/04/27 19:59:29 by afalmer-         ###   ########.fr       */
+/*   Updated: 2019/05/16 15:23:23 by afalmer-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ t_stack			*ft_set_stack(char **av, int ac)
 			if (!ft_add_num(nums[count], &stack))
 				return (NULL);
 		}
+		ft_free_multiarr(nums);
 	}
 	else
 	{

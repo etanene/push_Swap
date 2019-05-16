@@ -6,7 +6,7 @@
 /*   By: afalmer- <afalmer-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/13 20:02:29 by afalmer-          #+#    #+#             */
-/*   Updated: 2019/04/27 19:34:08 by afalmer-         ###   ########.fr       */
+/*   Updated: 2019/05/16 15:27:56 by afalmer-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,6 @@ int		main(int ac, char **av)
 		return (ft_free_stack(a, b));
 	}
 	ft_sort_print(&a, &b, ac, print);
+	ft_free_stack(a, b);
 	return (0);
 }

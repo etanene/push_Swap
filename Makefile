@@ -6,7 +6,7 @@
 #    By: afalmer- <afalmer-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/10 17:33:31 by afalmer-          #+#    #+#              #
-#    Updated: 2019/04/27 20:04:08 by afalmer-         ###   ########.fr        #
+#    Updated: 2019/05/16 14:13:20 by afalmer-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,16 +28,16 @@ FLAGS = -Wall -Wextra -Werror
 all: $(CHECKER) $(PUSH_SWAP)
 
 $(CHECKER): $(LIB) $(OBJDIR) $(OBJ_CHECKER) $(OBJ)
-	gcc $(FLAGS) $(OBJ_CHECKER) $(OBJ) -L./libft -lft -o $(CHECKER)
+	gcc $(FLAGS) $(OBJ_CHECKER) $(OBJ) -L./libft -lft -o $(CHECKER) -g
 
 $(PUSH_SWAP): $(LIB) $(OBJDIR) $(OBJ_PUSH_SWAP) $(OBJ)
-	gcc $(FLAGS) $(OBJ_PUSH_SWAP) $(OBJ) -L./libft -lft -o $(PUSH_SWAP)
+	gcc $(FLAGS) $(OBJ_PUSH_SWAP) $(OBJ) -L./libft -lft -o $(PUSH_SWAP) -g
 
 $(OBJDIR):
 	mkdir obj/
 
 $(OBJDIR)%.o: %.c
-	gcc $(FLAGS) -c $< -o $@ -I . -I ./libft/includes/
+	gcc $(FLAGS) -c $< -o $@ -I . -I ./libft/includes/ -g
 
 $(LIB):
 	make -C libft/
